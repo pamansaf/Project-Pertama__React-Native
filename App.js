@@ -9,10 +9,10 @@ const App = () => {
           Aplikasi Pertama
         </Text>
       </View>
-      <View className="flex justify-center items-center pt-3">
+      <View className="flex justify-center items-center pt-3  ">
         <Image
           source={require('./src/images/burung1.jpg')}
-          className="w-[300] h-[200]"
+          className="w-[200] h-[200] rounded-full"
         />
       </View>
       <View className="flex justify-center items-center pt-3">
