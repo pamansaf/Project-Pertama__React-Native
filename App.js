@@ -1,51 +1,55 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StatusBar,
-  Alert,
-  Image,
-} from 'react-native';
+import {View, Text, FlatList, StatusBar, Image} from 'react-native';
+
+const negara = [
+  'Indonesia',
+  'Jepang',
+  'Korea',
+  'Malaysia',
+  'Australia',
+  'Cina',
+];
+
+const daftarNegara = [
+  {
+    nama: 'indonesia',
+    deskripsi: 'ini adalah nama negara',
+    bendera:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Flag_of_Indonesia_%28physical_version%29.svg/640px-Flag_of_Indonesia_%28physical_version%29.svg.png',
+  },
+  {
+    nama: 'Amerika Serikat',
+    deskripsi: 'ini adalah nama negara',
+    bendera:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/640px-Flag_of_the_United_States_%28Pantone%29.svg.png',
+  },
+];
 
 const App = () => {
-  function hello() {
-    Alert.alert('Hello semuanya');
-  }
   return (
-    <View className="w-full min-h-screen bg-[#1f1f1f]">
-      <StatusBar barStyle={'light-content'} backgroundColor={'#1f1f1f'} />
+    <View className="flex-1 pt-3 bg-[#181818]">
+      <StatusBar barStyle={'light-content'} backgroundColor={'#181818'} />
+      <FlatList
+        data={negara}
+        renderItem={({item}) => (
+          <View className="mx-5 my-1">
+            <Text className="bg-[#1f1f1f] text-white text-center py-3 rounded-md">
+              {item}
+            </Text>
+          </View>
+        )}
+      />
 
-      <TouchableOpacity
-        onPress={() => hello()}
-        // onPressIn={() => hello()}
-        // onPressOut={() => hello()}
-        className="p-3">
-        <Text className="text-2xl text-white bg-blue-600 px-6 py-2 text-center font-semibold rounded-lg">
-          Registrasi
-        </Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => hello()}
-        className="mx-auto border-2 border-white rounded-full">
-        <Image
-          source={require('./src/images/burung1.jpg')}
-          className="w-[200] h-[200] rounded-full"
-        />
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => hello()}
-        className="items-center bg-blue-500 mt-5 mx-14 px-10 py-2 rounded-xl border-2 border-white">
-        <View className="mx-auto border-2 border-white rounded-full">
-          <Image
-            source={require('./src/images/burung1.jpg')}
-            className="w-[200] h-[200] rounded-full"
-          />
-        </View>
-        <Text className="text-white text-xl pt-3">Hello Burung</Text>
-      </TouchableOpacity>
+      <FlatList
+        data={daftarNegara}
+        renderItem={({item}) => (
+          <View className="flex flex-col justify-center items-center bg-[#1f1f1f] my-3 mx-5 py-5 shadow-xl">
+            <Image source={{uri: item.bendera}} className="w-[100] h-[70]" />
+            <Text className="text-white pt-3">{item.nama}</Text>
+            <Text className="text-white">{item.deskripsi}</Text>
+          </View>
+        )}
+      />
     </View>
   );
 };
