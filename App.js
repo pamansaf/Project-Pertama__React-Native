@@ -1,13 +1,30 @@
 import React, {useState, useEffect} from 'react';
-import {View, ActivityIndicator, TouchableOpacity, Text} from 'react-native';
+import {
+  View,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+  Linking,
+} from 'react-native';
 
 const App = () => {
-  const [loading, setLoading] = useState(false);
   return (
     <View>
-      <ActivityIndicator size={'large'} color={'red'} animating={loading} />
-      <TouchableOpacity onPress={() => setLoading(!loading)}>
-        <Text>Toggle</Text>
+      <TouchableOpacity onPress={() => Linking.openURL('https://google.com')}>
+        <ImageBackground
+          source={require('./src/images/burung1.jpg')}
+          className="m-5"
+          imageStyle={{borderRadius: 8}}>
+          <View className="p-5 rounded-lg">
+            <Text className="text-white">Image Background</Text>
+            <Text className="text-white">Image Background</Text>
+            <Text className="text-white">Image Background</Text>
+            <Text className="text-white">Image Background</Text>
+            <Text className="text-white">Image Background</Text>
+            <Text className="text-white">Image Background</Text>
+            <Text className="text-white">Image Background</Text>
+          </View>
+        </ImageBackground>
       </TouchableOpacity>
     </View>
   );
